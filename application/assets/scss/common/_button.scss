@@ -1,0 +1,191 @@
+//! button
+.com_btn{
+  padding: 0 10px;
+  border-radius: 10px;
+  @include inflex(all);
+  letter-spacing: normal;
+  box-sizing: border-box;
+  letter-spacing: -0.025em;
+  color:#fff;
+  text-align: center;
+  &_wrap {
+    @include flex(between);
+    .com_btn{
+      &+.com_btn, &+.com_check_box{
+        margin-left:6px;
+      }
+      &.full{
+        flex:1;
+        min-width: auto;
+        & + .full {
+          margin-top: 0;
+          margin-left: 10px;
+        }
+      }
+    }
+    .com_check_box{
+      &+.com_check_box, &+.com_btn{
+        margin-left:10px;
+      }
+    }
+    &.center{
+      justify-content: center;
+    }
+    &.bottom {
+      margin-top: 40px;
+      width:100%;
+      .com_btn{
+        min-width: 100px;
+        &.s{
+          min-width: 75px;
+        }
+      }
+    }
+    &.flex {
+      flex-wrap: wrap;
+    }
+    &.left {
+      @include flex(s);
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      .com_btn {
+        &.active {
+          color: #fff;
+          background: $lightPoint;
+          border: none;
+        }
+      }
+    }
+    &.right{
+      @include flex(right);
+    }
+    &+.com_btn_wrap{
+      margin-top:15px;
+    }
+    &+.com_red_txt{
+      margin-top:16px;
+    }
+  }
+  &+.com_btn {
+    margin-left: 10px;
+    @include media-max($m) {
+      margin-left: 5px;
+    }
+  }
+  &.full {
+    width: 100%;
+    min-width: 100%;
+    margin-left:0;
+    &+.full{
+      margin-left:0;
+      margin-top:6px;
+    }
+  }
+  //&컬러 color
+  &.green {
+    background-color: $green;
+  }
+  &.yellow {
+    background-color: $yellow;
+  }
+  //&사이즈 size
+  &.m {
+    height: 40px; 
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  &.s {
+    height: 50px;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  &.xs{
+    height: 40px; 
+    border-radius: 8px;   
+    font-size: 14px;
+    line-height: 1.2;
+  }
+  &.oval {
+    border-radius: 30px;
+  }
+  //&아이콘
+  .icon{
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    &.before{
+      margin-right:8px;
+    }
+    &.after{
+      margin-left:8px;
+    }
+    &.arrow_search{
+      width:29px;
+      height:29px;
+      background-image: url(../img/icon_arrow_point.png);
+      margin-left: 8px;
+    }
+    &.arrow_training{
+      width:29px;
+      height:29px;
+      background-image: url(../img/icon_arrow_green.png);
+      margin-left: 8px;
+    }
+    &.add_user{
+      width:38px;
+      height:32.5px;
+      background-image: url(../img/icon_add_user.png);
+    }
+    &.tel{
+      width:27px;
+      height:27px;
+      background-image: url(../img/icon_tel.png);
+    }
+  }
+}
+
+/*!페이징 << < > >> */
+.com_paging {
+  margin-top: 20px;
+  text-align: center;
+  @include flex(all);
+  .com_table + &{
+    margin-top:40px;
+  }
+  :is(.btn_first, .btn_prev, .btn_page, .btn_next, .btn_last) {
+    min-width: 42px;
+    height: 42px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin-left: 0;
+  }
+  :is(.btn_first, .btn_prev, .btn_next, .btn_last) img {
+    height: 18px;
+  }
+  :is(.btn_first, .btn_prev) {
+    transform: rotate(180deg);
+  }
+  .btn_prev {
+    margin-right: 7px;
+  }
+  .btn_next {
+    margin-left: 7px;
+  }
+  .btn_page {
+    line-height: inherit;
+    &.active {
+      font-weight: bold;
+      color: #fff;
+      // background-color: $point;
+      border-radius: 100%;
+    }
+    &.disabled {
+      cursor: auto;
+      opacity: 0.4
+    }
+  }
+}
+

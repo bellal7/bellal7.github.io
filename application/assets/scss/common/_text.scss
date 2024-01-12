@@ -1,0 +1,185 @@
+//!^text style
+
+.com_point_txt {
+  color: $lightPoint;
+}
+.com_red_txt {
+  color: #ff4444;
+  &+.com_member_card{
+    margin-top:30px;
+  }
+}
+.com_error_txt {
+  display: block;
+  text-align: left;
+  color:$lightPoint;
+  letter-spacing: -0.33px;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+// !page title
+.com_pg_tit {
+  position: relative;
+  font-weight: bold;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+  font-size: 22px;
+  line-height: 1.21;
+  span, b{
+    font-size: 22px;
+    line-height: 1.21;
+  }
+  &+.com_divider{
+    margin-top:15px;
+  }
+  &+.com_search{
+    margin-top:20px;
+  }
+  .com_divider.bold + &{
+    margin-top:30px;
+  }
+}
+
+//!!tag text
+.com_tag{
+  @include flex(y);
+  @include flex-wrap;
+  width:100%;
+  .tag{
+    display: inline-block;
+    margin-right:5px;
+    margin-bottom:5px;
+    font-size:$font10;
+    line-height: 1.1;
+    letter-spacing: -0.25px;
+    color: #797f87;  
+    word-break: break-all;
+  }
+  &.type_box{
+    gap: 10px;
+    .tag{
+      margin:0;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid $c-border;
+      background-color: #fff;
+      letter-spacing: -0.3px;
+      text-align: center;
+      color: #333;
+      font-size: 14px;
+      line-height: 1.17;
+      &.right {
+        margin-left: auto;
+        margin-right: 6px;
+      }
+      .btn_del {
+        @include addImg(icon_del_point, 20, 20, 20px 20px);
+        vertical-align: -4px;
+        margin-left: 4px;
+      }
+    }
+    &.point {
+      .tag {
+        color: $point;
+        border: none;
+        background-color: #e1edea;
+      }
+    }
+  }
+}
+
+//new circle icon
+.com_new {
+  @include inflex(all);
+  width: 21px;
+  height: 21px;
+  border-radius: 21px;
+  background-color: $red;
+  color: #fff;
+  text-align: center;
+  margin-left: 6px;
+  vertical-align: 1px;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+// "제목:내용" 타입의 텍스트 리스트
+.com_info_list{
+  margin-inline: 4px;
+  .item{
+    &:not(:last-child){
+      margin-bottom:13px;
+    }
+    &.border {
+      border-top: 1px solid $c-border;
+      padding-top: 15px;
+      margin-top: 5px;
+    }
+    &.last {
+      border-top: 1px solid #000;
+      padding-top: 15px;
+      margin-top: 5px;
+    }
+  }
+  & :is(.tit_field, .info_field){
+    display: inline;
+  }
+  .tit_field{
+    font-weight: 600;
+    white-space: nowrap;
+    &::after{
+      content:' :';
+      margin-right:7px;
+    }
+  }
+  .info_field{
+    font-weight: bold;
+    color:$lightPoint;
+    word-break: break-all;
+  }
+  &+.com_input_sec{
+    margin-top:16px;
+  }
+  &+.com_red_txt{
+    margin-top:10px;
+    font-size: 13px;
+    line-height: 1.2;
+  }
+  &.type_input{
+    .item {
+      &:not(:last-child) {
+        margin-bottom: 25px;
+      }
+    }
+    .tit_field {
+      display: inline-block;
+      width: 55px;
+      min-width: 55px;
+      &::after {
+        display: none;
+      }
+    }
+    .info_field {
+      font-size: 18px;
+      line-height: 1.4;
+      vertical-align: -2px;
+      .textarea {
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+//환불규정
+.com_refund_notice {
+  @include flex(y);
+  margin-top: 30px;
+  color: #3b3b3b;
+  font-weight: bold;
+  &::before {
+    @include addImg(icon_alert_gray, 26, 26, 26px 26px);
+    margin-right: 5px;
+  }
+}

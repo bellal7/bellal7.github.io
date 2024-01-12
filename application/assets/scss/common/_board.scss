@@ -1,0 +1,211 @@
+//^board style
+.com_board_list{
+  margin-top: 20px;
+  //pc 
+  // @include media-min($xl){
+    // thead{
+    //   border-top:1px solid #333;
+    // }
+    // :is(th,td){
+    //   border-bottom:1px solid $c-border;
+    //   font-size:14px;
+    //   letter-spacing: normal;
+    //   text-align: center;
+    // }
+    // th{
+    //   font-weight: bold;  
+    //   padding:11.5px 5px;
+    // }
+    // td{
+    //   padding:16.5px 5px;
+    //   &.tit_field, &.left {
+    //     text-align: left;
+    //   }
+    //   .txt{
+    //     font-size:14px;
+    //   }
+    // }
+    // .com_btn{
+    //   min-width: auto;
+    //   padding-inline: 14.5px;
+    //   &.s{
+    //     min-height: 30px;
+    //     height: 30px;
+    //     padding-block: 0;
+    //   }
+    // }
+    // .link_view{
+    //   @include multi-ellipsis(1);
+    //   max-width: 100%;
+    //   width:auto;
+    //   &.has_re{
+    //     @include flex(y);
+    //     .txt{
+    //       @include multi-ellipsis(1);
+    //     }
+    //   }
+      
+    // }
+  // }
+  // @include media-max($xxl) {
+    display: block;
+    width:100%;
+    // border:1px solid $c-border;
+    :is(tbody){
+      display: block;
+    }
+    td{
+      display: inline-block;
+      border:none;
+      padding:0;
+      line-height: 18px;
+      font-size:13px;
+    }
+    :is(colgroup, thead){
+      display: none;
+    }
+    tr{
+      width:100%;
+      padding:17px 0;
+      line-height: 1.5;
+      @include flex(y);
+      @include flex-wrap;
+      &:not(:last-child){
+        border-bottom:1px solid $c-border;
+      }
+      .th_m{
+        font-size:13px;
+        letter-spacing: normal;
+        margin-right: 3px;
+      }
+      .tit_field{
+        order:1;
+        font-weight: bold;
+        letter-spacing: -0.35px;
+        color:#222;
+        width:100%;
+        margin-bottom:10px;
+        text-align: left;
+        font-size: 12px;
+        line-height: 1.2;
+        @include media-min($m) {
+          font-size: 14px;
+          line-height: 1.4;
+        }
+        .link {
+          font-size: inherit;
+        }
+      }
+      .info_field{
+        order:3;
+        color: #b9b9b9;
+        &.bar {
+          @include divider(1px,12px,10px);
+        }
+      }
+      .state_field{
+        order:4;
+        width:100%;
+        margin-top:20px;
+        font-size: 12px;
+        line-height: 1.2;
+        @include media-min($m) {
+          font-size: 14px;
+          line-height: 1.4;
+        }
+      }
+      .date_field{
+        order:2;
+        margin-left:auto;
+        font-size:12px;
+        color:#999;
+        text-align: right;
+      }
+      .btn_field{
+        order:9;
+        min-width:50%;
+        margin-top:10px;
+        .block_pc + .com_btn{
+          margin-left:10px;
+        }
+      }
+    }
+  // }
+}
+.com_board_detail {
+  &__top {
+    padding: 20px 0;
+    .tit {
+      font-size: 18px;
+      line-height: 1.4;
+      @include media-min($m) {
+        font-size: 24px;
+        line-height: 1.4;
+      }
+      margin-bottom: 7px;
+    }
+    .info {
+      @include flex(y);
+      color: #b9b9b9;
+      flex-wrap: wrap;
+      font-size: 14px;
+      line-height: 1.2;
+      @include media-min($m) {
+        font-size: 18px;
+        line-height: 1.4;
+      }
+      .bar {
+        @include divider(1px,12px,10px);
+      }
+      .btn_wrap {
+        margin-left: auto;
+        @include flex(y);
+        gap: 10px;
+        .btn_write{
+          @include addImg(icon_write, 33, 28, 33px 28px);
+        }
+        .btn_delete{
+          @include addImg(icon_trash, 28, 28, 28px 28px);
+        }
+        .btn_report{
+          @include addImg(icon_report, 28, 28, 28px 28px);
+        }
+      }
+    }
+  }
+  &__box {
+    padding: 20px 0;
+    > img {
+      width: 100%;
+      margin-top: 14px;
+    }
+  }
+}
+.com_reply_wrap {
+  padding-inline: 25px;
+  .input_box {
+    position: relative;
+    .input {
+      height: 70px;
+    }
+    .btn_ok {
+      @include flex(all);
+      width: 48px;
+      height: 48px;
+      background: $lightPoint;
+      border-radius: 100%;
+      position: absolute;
+      right: 10px;
+      top: 12px;
+      &::before {
+        @include addImg(icon_send_white, 28, 28, 28px 28px);
+      }
+    }
+  }
+  .reply_list {
+    margin-top: 10px;
+    .reply_item {
+      border-bottom: 1px solid $c-border;
+    }
+  }
+}

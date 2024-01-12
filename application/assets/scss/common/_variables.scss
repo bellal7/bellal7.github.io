@@ -1,0 +1,313 @@
+/* ^scss에서 수정해주세요!  Don't edit .css file, Only work on the scss*/
+// &mixin
+@mixin media-max($w) {
+  @media screen and (max-width: $w) {
+    @content;
+  }
+}
+
+@mixin media-min($w) {
+  @media screen and (min-width: $w) {
+    @content;
+  }
+}
+
+@mixin media-between($max, $min) {
+  @media screen and (max-width: $max) and (min-width: $min) {
+    @content;
+  }
+}
+@mixin beforeafter{
+  content: '';
+  display: inline-block;
+}
+//! 단독 사용하지 않음. Don't use alone
+@mixin flex-align($align) {
+	@if ($align == "x") {
+		justify-content: center;
+		-webkit-justify-content: center;
+		-moz-justify-content: center;
+	}
+	@if ($align == "y") {
+		align-items: center;
+		-webkit-align-items: center;
+		-moz-align-items: center;
+	}
+	@if ($align == "s") {
+		align-items: flex-start;
+		-webkit-align-items: flex-start;
+		-moz-align-items: flex-start;
+	}
+  @if ($align == "right") {
+		justify-content: flex-end;
+		-webkit-justify-content: flex-end;
+		-moz-justify-content: flex-end;
+	}
+  @if ($align == "left") {
+		justify-content: flex-start;
+		-webkit-justify-content: flex-start;
+		-moz-justify-content: flex-start;
+	}
+	@if ($align == "all") {
+		align-items: center;
+		-webkit-align-items: center;
+		-moz-align-items: center;
+		justify-content: center;
+		-webkit-justify-content: center;
+		-moz-justify-content: center;
+	}
+	@if ($align == "between") {
+		align-items: center;
+		-webkit-align-items: center;
+		-moz-align-items: center;
+		justify-content: space-between;
+		-webkit-justify-content: space-between;
+		-moz-justify-content: space-between;
+	}
+	@if ($align == "evenly") {
+		align-items: center;
+		-webkit-align-items: center;
+		-moz-align-items: center;
+		justify-content: space-evenly;
+		-webkit-justify-content: space-evenly;
+		-moz-justify-content: space-evenly;
+	}
+	@if ($align == "column") {
+		flex-direction: column;
+		-webkit-flex-direction: column;
+		-moz-flex-direction: column;
+	}
+  @if ($align == "_") {
+		align-items: baseline;
+		-webkit-align-items: baseline;
+		-moz-align-items: baseline;
+	}
+}
+//^ flex 박스
+@mixin flex($align) {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: flex;
+	@include flex-align($align);
+}
+//^ inline flex 박스
+@mixin inflex($align) {
+	display: -webkit-inline-box;
+	display: -webkit-inline-flex;
+	display: -moz-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	@include flex-align($align);
+}
+// flex-wrap
+@mixin flex-wrap($wrap: wrap) {
+  -webkit-flex-wrap: $wrap;
+     -moz-flex-wrap: $wrap;
+      -ms-flex-wrap: $wrap;
+          flex-wrap: $wrap;
+}
+@mixin browser-ie {
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+		@content;
+	}
+}
+
+//^ 텍스트 분할선 (가로, 세로, 양쪽여백) Text divider
+@mixin divider($w, $h, $side-mg) {
+  position: relative;
+  &::after {
+    @include beforeafter;
+    position: relative;
+    width: $w;
+    height: $h;
+    margin-inline: $side-mg;
+    background: $c-border;
+    cursor: default;
+  }
+}
+@mixin dot($w, $h, $side-mg, $color) {
+  position: relative;
+  &::before {
+    @include beforeafter;
+    position: relative;
+    width: $w;
+    height: $h;
+    margin-inline: $side-mg;
+    background: $color;
+    border-radius: $w;
+    vertical-align: middle;
+    cursor: default;
+  }
+}
+
+//^ 이미지 리스트 정렬 (얖옆 여백-아이템과 아이템사이를 반으로 나눈 수, 한줄에 들어갈 아이템 수, 두번째 줄부터 상단에 넣을 여백)
+@mixin list($mg, $i, $mgtop: 0) {// $mg = item gap / 2 , $i = Number of items in one line, $mgtop = Margin to be added to the top starting from the second line 
+  display: flex;
+  flex-wrap: wrap;
+  @if ($i == 1) {
+    width:100%;
+  } @else{
+    width: calc(100% + (#{$mg} * 2));
+  }
+  margin-left: -#{$mg};
+  margin-top: -#{$mgtop};
+  > li,
+  > div,
+  > article,
+  > section,
+  > figure,
+  > button,
+  > a {
+  @if ($i == 1) {
+    width: 100%;
+  } @else if ($i == 2) {
+    width: calc(50% - (#{$mg} * 2));
+  } @else if ($i == 3) {
+    width: calc(33.333% - (#{$mg} * 2));
+  } @else if ($i == 4) {
+   width: calc(25% - (#{$mg} * 2));
+  } @else if ($i == 5) {
+    width: calc(20% - (#{$mg} * 2));
+  } @else if ($i == 6) {
+    width: calc(16.66% - (#{$mg} * 2));
+  } @else if ($i == 7) {
+    width: calc(14.25% - (#{$mg} * 2));
+  }
+    margin-top: $mgtop;
+    margin-left: $mg;  
+    margin-right: $mg;  
+  }
+}
+
+@mixin thumb($w,$h) {//영역에 꽉찬 이미지 ex)thumbnail ,profile image
+	overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $w;
+  height: $h;
+  min-width: $w;
+  img{
+    object-fit: cover;
+    min-height: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    max-width: none;
+  }
+}
+
+@mixin addImg($img,$w,$h,$size){//:after, :before 로 이미지 추가 시 add image with ":after, :before"
+  content: '';
+  display: inline-block;
+  background-position: center;
+  background-size: $size;
+  background-repeat: no-repeat;
+  background-image: url(../img/#{$img}.png);
+  width: #{$w}px;
+  height: #{$h}px;
+}
+
+@mixin addContent($content, $width, $height,$bgColor,$color) {
+  content: $content;
+  width: $width;
+  height: $height;
+  text-align: center;
+  line-height: $height;
+  background-color: $bgColor;
+  color: $color;
+  display: inline-block;
+}
+
+@mixin css3-prefix($property, $value) {
+  -webkit-#{$property}: #{$value};
+  -khtml-#{$property}: #{$value};
+  -moz-#{$property}: #{$value};
+  -ms-#{$property}: #{$value};
+  -o-#{$property}: #{$value};
+  #{$property}: #{$value};
+}
+@mixin border-radius($radius: 5px) {
+  @include css3-prefix("border-radius", $radius);
+}
+// ellipsis
+@mixin multi-ellipsis($line) {
+	display: block;
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: $line;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+}
+// arrow
+@mixin addArrow($w,$h,$color,$direction){
+  @include beforeafter;
+  position: relative;
+  width: #{$w}px;
+  height: #{$h}px;
+  border: solid $color;
+  border-width: 2px 2px 0 0;
+  @if ($direction == "left") {
+    transform: rotate(-135deg);
+  }
+  @if ($direction == "right") {
+    transform: rotate(45deg);
+  }
+  @if ($direction == "down") {
+    transform: rotate(135deg);
+  }
+  @if ($direction == "up") {
+    transform: rotate(-45deg);
+  }
+}
+
+//* 변수 목록
+
+// device-size
+$devices: (full:1920px, xxl:1599.9px, xl:1300px, l:1023.9px, m:767.9px, s:639.9px, xs:575.9px, xxs:429.9px, mini:319.9px);
+$full: map-get($devices, full); //디자인 시안 최대 크기
+$xxl: map-get($devices, xxl); //full이 너무 커서(1900이상) breakpoint가 추가로 필요할 경우
+$xl: map-get($devices, xl);
+$l: map-get($devices, l);
+$m: map-get($devices, m); // mobile
+$s: map-get($devices, s);
+$xs: map-get($devices, xs);
+$xxs: map-get($devices, xxs);
+$mini: map-get($devices, mini);
+
+$max-w:1920px;
+// margin
+$pd-inline:25px;
+$pd-inline-m:15px;
+%pd-inline {
+  padding-inline: 25px;
+  // @include media-max($xxs){
+  //   padding-inline: 15px;
+  // }
+}
+$pd-main:40px;
+
+// font
+$font-default: 'Pretendard', sans-serif; //기본 폰트 스타일 Default font-family
+$fc-default: #333; //Font default color
+
+// color
+//$black: #222;
+$point: #bfd45d;
+$pointBg:#ecf6f1;
+$lightPoint:#54ac82;
+$gray: #51585f;
+$lightGray: #dedede;
+$white: #fff;
+$red: #ff4444;// 수정불가
+$orange: #f05b13;
+
+$green: #bfd45d;
+$yellow:#ffcc25;
+$c-border:#e6e6e6;
+$bg:#f4f6f8;
+
+
+$h-head-m: 55px;//head높이 모바일 
+$h-head-pc: 95px;//head높이 pc

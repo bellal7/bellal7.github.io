@@ -1,0 +1,377 @@
+//^form style
+
+//!검색어 입력
+.com_search {
+  @include flex(between);
+  overflow: hidden;
+  .input {
+    width:calc(100% - 48px);
+    height: 60px;
+    flex: 1;
+    padding-inline: 15px;
+    border-radius: 10px;
+    &::placeholder {
+      color: #b5b3bb;
+    }
+  }
+  &.type_box{
+    padding: 10px;
+    box-shadow: 5px 10px 10px 0 rgba(0, 0, 0, 0.16);
+    border-radius: 10px;
+    border:solid 1px #d9d9d9;
+    background: #fff;
+    .input{
+      background: #fff;
+      border: none;
+      height:48px;
+      line-height: 48px;
+      padding-left:10px;
+    }
+    .btn_search {
+      @include flex(all);
+      width: 48px;
+      height: 48px;
+      border-radius: 100%;
+      background: $lightPoint;
+      margin-left:6px;
+      &::after{
+        @include addImg(icon_search_white,22,22,22px);
+      }
+    }
+    &+.com_btn_wrap{
+      margin-top:20px;
+    }
+  }
+}
+
+//! 정보입력 폼 info input form
+.com_input_sec{
+  .tit{
+    font-weight: 600;
+    margin-bottom:50px;
+    font-size: 28px;
+    line-height: 1.29;
+    .info_txt{
+      margin-top:4px;
+      display: block;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 1.2;
+      @include media-min($m) {
+        font-size: 18px;
+        line-height: 1.4;
+      }
+    }
+    &.small{
+      margin-bottom:30px;
+      font-size: 22px;
+      @include media-min($m) {
+        font-size: 28px;
+      }
+      &+.com_red_txt{
+        margin-top:-18px;
+        margin-bottom:30px;
+      }
+    }
+    &.sec_type{
+      margin-bottom:30px;
+    }
+    &.center {
+      text-align: center;
+    }
+  }
+  .com_divider{
+    &+.tit{
+      margin-top:30px;
+    }
+  }
+  .icon_must{
+    color:$point;
+    margin-left:4px;
+  }
+  .form{
+    .tit_field{
+      font-size: 16px;
+      line-height: 1.2;
+      @include media-min($m) {
+        font-size: 22px;
+        line-height: 1.2;
+      }
+      font-weight: 600;
+      margin-bottom:14px; 
+      padding-left:4px;
+      position: relative;
+      &+.info_field{
+        margin-top:-5px;
+      }
+      .info_txt {
+        display: inline-block;
+        color: $red;
+        font-weight: normal;
+        margin-left: 4px;
+        margin-top: 0;
+        font-size: 13px;
+        line-height: 1.2;
+        @include media-min($m) {
+          font-size: 16px;
+          line-height: 1.4;
+        }
+      }
+    }
+    .input_field{
+      font-size: 16px;
+      line-height: 1.4;
+      @include media-min($m) {
+        font-size: 22px;
+        line-height: 1.4;
+      }
+      &:not(:last-child){
+        margin-bottom:30px;
+      }
+      .com_chk ~ label{
+        &:not(:last-child){
+          margin-right:32px;
+        }
+      }
+      &.tel_sec{
+        .code{
+          width:74px;
+          flex:inherit !important;
+        }
+        .num{
+          flex:1;
+          width: 170px;
+        }
+        .com_btn {
+          width: calc(100% - 250px);
+          min-width: auto !important;
+          @include media-min($m) {
+            width: auto;
+            min-width: 130px !important;
+          }
+        }
+      }
+      &+.com_divider{
+        margin-block:30px;
+      }
+      &.tag_sec{
+        .com_tag{
+          margin-top:12px;
+        }
+        .com_btn{
+          min-width: 130px;
+        }
+      }
+      &.sns_sec{
+        .sns_link {
+          @include flex(between);
+          gap: 7px;
+          & + .sns_link {
+            margin-top: 10px;
+          }
+          .thumb {
+            @include thumb(60px,60px)
+          }
+        }
+      }
+      &.birth_sec {
+        .input_wrap {
+          align-items: center;
+          justify-content: center;
+          .txt {
+            display: inline-block;
+            margin: 0 6px 0 4px;
+            @include media-min($m) {
+              margin: 0 30px 0 4px;
+            }
+            &:last-child{
+              margin-right: 0;
+            }
+          }
+        }
+      }
+      &.type_select {
+        .input_wrap {
+          gap: 14px;
+          & + .input_wrap {
+            margin-top: 17px;
+          }
+          .select {
+            margin: 0;
+          }
+        }
+      }
+    }
+    .input_wrap{
+      @include flex(left);
+      input[type=text], input[type=number], .input, .select{
+        flex:1;
+        & + .com_btn{
+          min-width:130px;
+        }
+      }
+      &+.input_wrap, &+.input{
+        margin-top:10px;
+      }
+      &+.info_txt{
+        padding-left:4px;
+      }
+    }
+    .input_wrap2{
+      @include flex(y);
+      flex-wrap: wrap;
+      gap:10px;
+      input~label{margin-right:20px;}
+      &+.input_wrap{
+        margin-top:10px;
+      }
+    }
+    .select {
+      & + .input_wrap {
+        margin-top: 10px;
+      }
+    }
+    .info_field{
+      padding-left:4px;
+      margin-bottom:30px;
+    }
+    .input {
+      width: 100%;
+    }
+    .btn_same {
+      font-size: 16px;
+      line-height: 1.4;
+      @include media-min($m) {
+        font-size: 20px;
+        line-height: 1.4;
+      }
+    }
+    &+.com_divider{
+      margin-block:30px;
+    }
+    .com_btn{
+      &.m{
+        font-size: 14px;
+        line-height: 1.2;
+        @include media-min($m) {
+          font-size: 18px;
+          line-height: 1.4;
+        }
+        @include media-max($xxs) {
+          font-size:12px
+        }
+      }
+    }
+  }
+  .info_txt{
+    color:$red;
+    margin-top:10px;
+    font-size: 14px;
+    line-height: 1.2;
+    @include media-min($m) {
+      font-size: 18px;
+      line-height: 1.4;
+    }
+  }
+  .sign_txt {
+    font-size: 16px;
+    line-height: 1.4;
+    @include media-min($m) {
+      font-size: 22px;
+      line-height: 1.4;
+    }
+  }
+  .sign_box {
+    font-size: 16px;
+    line-height: 1.4;
+    @include media-min($m) {
+      font-size: 22px;
+      line-height: 1.4;
+    }
+  }
+  .com_box {
+    width: 100%;
+    flex: 1;
+    padding: 20px;
+    @include flex(column);
+    align-items: center;
+    .icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 100%;
+      display: block;
+      margin-bottom: 18px;
+      background-color: #bfc8d3;
+      &.icon_children {
+        @include addImg(icon_children, 70, 70, 70px 70px);
+      }
+      &.icon_user {
+        @include addImg(icon_user, 70, 70, 70px 70px);
+      }
+      &.icon_expert {
+        @include addImg(icon_expert, 70, 70, 70px 70px);
+      }
+      &.icon_korea {
+        background-color: #fff;
+        border: 1px solid #bfd0de;
+        @include addImg(icon_korea, 70, 70, 70px 70px);
+      }
+      &.icon_abroad {
+        @include addImg(icon_abroad, 70, 70, 70px 70px);
+      }
+    }
+    .type_txt {
+      font-weight: bold;
+      text-align: center;
+      padding-bottom:18px;
+    }
+    .com_btn {
+      width: 100%;
+      margin-top: auto;
+      font-weight: bold;
+    }
+  }
+  // 회원가입 - 회원 유형 선택
+  .box_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    & + .com_box {
+      margin-top: 39px;
+    }
+  }
+  &+.com_btn_wrap{
+    &.bottom{
+      margin-top:20px;
+    }
+  }
+}
+//!파일등록
+.com_add_file{
+  @include flex(column);
+  gap:10px;
+  margin-top:12px;
+  .file{
+    align-self: flex-start;
+    @include inflex(between);
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 1px #e2e2e2;
+    background-color: #fff;
+    letter-spacing: normal;
+    font-size: 14px;
+    line-height: 1.2;
+    @include media-min($m) {
+      font-size: 18px;
+      line-height: 1.4;
+    }
+    .btn_del{
+      background: url(../img/icon_del.png) no-repeat ;
+      background-size: contain;
+      font-size:0;
+      width:12px;
+      height: 12px;
+      margin-left:12px;
+    }
+  }
+}

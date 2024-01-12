@@ -1,0 +1,1368 @@
+.img_banner{
+  &.m{
+    @include media-min($m){
+      display: none;
+    }
+  }
+  &.t{
+    display: none;
+    @include media-min($m){
+      display: block;
+    }
+  }
+}
+.com_bg {
+  background: #f6f7f9;
+}
+//shadow box
+.com_box {
+  border-radius: 20px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #d9d9d9;
+  background-color: #fff;
+}
+//!열기 접기 토글 버튼
+.com_btn_toggle {
+  @include flex(all);
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  margin-left: -40px;
+  width: 90px;
+  height: 40px;
+  border-radius: 20px 20px 0 0;
+  background: #555b67;
+  text-align: center;
+  &::before {
+    @include addArrow(12,12,#fff,down);
+    margin-right: 7px;
+    margin-bottom: 3px;
+  }
+  &.active {
+    &::before {
+      @include addArrow(12,12,#fff,up);
+      margin-bottom: -5px;
+    }
+    .txt {
+      &.open {
+        display: none;
+      }
+      &.close {
+        display: block;
+      }
+    }
+  }
+  .txt {
+    font-size: 16px;
+    line-height: 1.4;
+    @include media-min($m) {
+      font-size: 20px;
+      line-height: 1.4;
+    }
+    line-height: 1.2;
+    letter-spacing: normal;
+    color: #fff;
+    &.open {
+      display: block;
+    }
+    &.close {
+      display: none;
+    }
+  }
+}
+//!like button on/off
+.com_like {
+  & + label {
+    margin-left: auto;
+  }
+}
+//!통계 박스
+.com_statistics {
+  padding: 25px 13px 30px;
+  .tit_box {
+    @include flex(y);
+    padding: 0 0 0 12px;
+    .icon_statistics {
+      @include addImg(icon_statistics_circle, 70, 70, 70px 70px);
+      border-radius: 100%;
+      flex: none;
+    }
+    .icon_clock {
+      @include addImg(icon_clock, 26, 26, 26px 26px);
+      vertical-align: -4px;
+      margin-left: 14px;
+    }
+    .com_pg_tit {
+      padding-left: 12px;
+      .txt {
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 1.4;
+        @include media-min($m) {
+          font-size: 24px;
+          line-height: 1.4;
+        }
+      }
+      .date {
+        display: block;
+        margin-top: 6px;
+        font-weight: normal;
+        line-height: 1.19;
+        letter-spacing: normal;
+        text-align: left;
+        color: #000;
+        font-size: 13px;
+        line-height: 1.2;
+        @include media-min($m) {
+          font-size: 16px;
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+  .desc {
+    margin: 15px 12px;    
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #3c3736;
+  }
+  .graph_wrap {
+    margin-bottom: 30px;
+    .tit{
+      font-size: 16px;
+      line-height: 1.4;
+      @include media-min($m) {
+        font-size: 20px;
+        line-height: 1.4;
+      }
+      font-weight: 600;
+      color:#000;  
+      margin-right: auto;
+      @include dot(7px,7px,4px,$lightPoint);
+      margin-left:-4px;
+      &__wrap{
+        @include flex(between);
+        margin-bottom:19px;
+      }
+    }
+  }
+  .data_list{
+    padding: 25px;
+    border-radius: 20px;
+    background-color: #f6f7f9; 
+    margin-top:20px;
+    .item {
+      @include flex(between);
+      padding: 5px 0;
+      .data {
+        text-align: right;
+        font-weight: 500;
+        &.com_point_txt {
+          font-weight: bold;
+        }
+      }
+    }
+    &+.graph_wrap{
+      margin-top:25px;
+    }
+  }
+}
+//!트레이닝,컨텐츠,추천컨텐츠,건강식품,전문가
+.com_item_wrap {
+  & + .com_item_wrap {
+    margin-top: 20px;
+  }
+  .tit_box{
+    @include flex(between);
+    margin-bottom:16px;
+    .tit{
+      font-weight: bold;
+      margin-right:auto;
+      margin-left:8px;
+      font-size: 22px;
+      @include media-min($m) {
+        font-size: 28px;
+      }
+    }
+  }
+  .img_box {
+    position: relative;
+    img {
+      @include thumb(100%,100%);
+      border-radius: 10px;
+    }
+    .status {
+      @include inflex(all);
+      width: 100%;
+      height: 50px;
+      font-size: 18px;
+      line-height: 1.2;
+      @include media-min($m) {
+        font-size: 20px;
+        line-height: 1.2;
+      }
+      border-radius: 10px;
+      margin-top: 2px;
+      padding: 10px 0;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      &.incomplete {
+        border: solid 1px #ce5159;
+        background-color: #f5616b;
+      }
+      &.complete {
+        border: solid 1px $lightPoint;
+        background-color: $lightPoint;
+      }
+    }
+    .btn_cart {
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+      width: 48px;
+      height: 48px;
+      background: #fff;
+      border-radius: 100%;
+      &::before {
+        @include addImg(icon_cart, 28, 28, 28px 28px);
+      }
+    }
+    .icon_free {
+      position: absolute;
+      left: 10px;
+      bottom: 0px;
+      @include addImg(icon_free, 56, 28, 56px 28px);
+    }
+  }
+  .info_box {
+    margin-top: 8px;
+    .tit {
+      margin-top: 10px;
+      font-weight: bold;
+      letter-spacing: normal;
+      font-size: 18px;
+      line-height: 1.21;
+      @include media-min($m) {
+        font-size: 24px;
+        line-height: 1.21;
+      }
+    }
+    .desc {
+      margin-top: 6px;
+      font-weight: normal;
+      line-height: 1.33;
+      letter-spacing: normal;
+      text-align: left;
+      color: #3c3736;
+      @include multi-ellipsis(2);
+    }
+    .price {
+      margin-top: 6px;
+      letter-spacing: -1px;
+      text-align: left;
+      color: #000;
+      font-size: 16px;
+      line-height: 1.2;
+      @include media-min($m) {
+        font-size: 20px;
+        line-height: 1.2;
+      }
+    }
+    .discount {
+      margin-left: 6px;
+      font-weight: bold;
+      line-height: 1.17;
+      letter-spacing: -0.9px;
+      text-align: left;
+      color: #f44;
+    }
+    .hit{
+      border: solid 1px #c2e2d2;
+      background-color: $pointBg;
+      border-radius: 5px;
+      margin-top:18px;
+      .item{
+        padding:8px 10px;
+        @include flex(between);
+        &:not(:last-child){
+          border-bottom:1px solid #c2e2d2;
+        }
+        .name{
+          font-weight: 500;
+          font-size: 13px;
+          line-height: 1.2;
+          @include media-min($m) {
+            font-size: 16px;
+            line-height: 1.4;
+          }
+        }
+        .num{
+          color:$lightPoint;
+        }
+      }
+    }
+  }
+  .icon_box {
+    position: relative;
+    @include flex(y);
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 10px;
+    .icon_status {
+      @include inflex(all);
+      height: 17px;
+      min-width: 35px;
+      padding: 4px 5px;
+      border-radius: 2px;
+      font-weight: bold;
+      color: #fff;
+      font-size:12px;
+      &.new {
+        background-color: #027df9;
+      }
+      &.hot {
+        background-color: #f44;
+      }
+    }
+  }
+  //expert
+  &.type_expert {
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px 15px 20px;
+    & + .type_expert {
+      margin-top: 30px;
+    }
+    .info_wrap {
+      @include flex(s);
+      gap: 14px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid $c-border;
+      & + .com_divider {
+        margin-block: 30px 15px;
+      }
+    }
+    .img_box {
+      @include thumb(125px,150px);
+    }
+    .info_box {
+      margin-top: 0;
+      flex: 1;
+      .tit {
+        @include flex(between);
+        align-items: flex-start;
+        color: #333437;
+        margin-top: 0;
+        .com_like {
+          &+label{
+            flex: none;
+            margin-left:5px;
+            margin-top:4px;
+          }
+        }
+      }
+      .desc {
+        margin-top: 10px;
+        color: #b9b9b9;
+        @include multi-ellipsis(1);
+        &.job {
+          color: #333;
+          @include multi-ellipsis(2);
+        }
+      }
+      & + .info_wrap {
+        margin-top: 20px;
+        padding-bottom: 5px;
+        border-bottom: none;
+      }
+    }
+    .tag {
+      @include multi-ellipsis(1);
+      margin-top: 10px;
+      .txt {
+        display: inline-block; 
+        letter-spacing: -0.4px;
+        color: #929497;
+        font-size: 13px;
+        line-height: 1;
+        @include media-min($m) {
+          font-size: 16px;
+          line-height: 1;
+        }
+        & + .txt {
+          margin-left: 5px;
+        }
+      }
+    }
+    .location{
+      border-top: 1px solid $c-border;
+      padding-top: 12px;
+      .name{
+        font-weight: bold;
+        color:$point;
+        margin-bottom:10px;
+        font-size: 16px;
+        line-height: 1.4;
+        @include media-min($m) {
+          font-size: 20px;
+          line-height: 1.4;
+        }
+      }
+      .list{
+        & :is(.tel,.address){
+          @include flex(y);
+        }
+        .icon{
+          width:15px;
+          height:15px;
+          margin-right:3px;
+        }
+        .tel{
+          margin-bottom:10px;
+          font-weight: bold;
+        }
+        .address {
+          font-size: 13px;
+          line-height: 1.2;
+          @include media-min($m) {
+            font-size: 16px;
+            line-height: 1.4;
+          }
+        }
+      }
+    }
+    .date {
+      font-size: 16px;
+      line-height: 1.4;
+      @include media-min($m) {
+        font-size: 22px;
+        line-height: 1.4;
+      }
+      font-weight: bold;
+      & + .com_divider {
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+    }
+    .reservation_area {
+      background: $pointBg;
+      margin-top: 30px;
+      width: calc(100% + 30px);
+      margin-left: -15px;
+      padding: 20px;
+      .date {
+        padding-bottom: 10px;
+      }
+    }
+    .com_btn_wrap {
+      padding-top: 25px;
+      @include media-min($m) {
+        max-width: 380px;
+        margin: 0 auto;
+      }
+      .com_btn {
+        text-align: center;
+        &.active {
+          background: $point;
+          color: #fff;
+          border: 1px solid $point;
+        }
+      }
+    }
+    .link_wrap {
+      @include flex(y);
+      padding: 20px 0 25px;
+      gap: 15px;
+      .btn {
+        width: 60px;
+      }
+    }
+    .expert_desc {
+      padding: 20px 0;
+      color: #707070;
+      border-top: 1px solid $c-border;
+    }
+    .count {
+      color: #f5616b;
+    }
+    .btn_reservation {
+      background: #f5616b;
+    }
+  }
+  &.type_row {
+    @include flex(y);
+  }
+  &.type_result {
+    @include flex(s);
+    padding: 20px 14px;
+    border-radius: 20px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    background-color: #fff;
+    border: solid 1px #d9d9d9;
+    .img_box {
+      @include thumb(105px,105px);
+    }
+    .info_box {
+      margin-top: 0;
+      margin-left: 12px;
+      flex: 1;
+      .icon_box,.tit {
+        margin-top: 0;
+        & + .tit {
+          margin-top: 10px;
+        }
+      }
+      .name {
+        font-weight: bold;
+      }
+      .score {
+        color: $lightPoint;
+        font-size: 18px;
+        line-height: 1.4;
+        @include media-min($m) {
+          font-size: 24px;
+          line-height: 1.4;
+        }
+        margin-left: 4px;
+        margin-right: 14px;
+        .txt {
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 1.2;
+          @include media-min($m) {
+            font-size: 18px;
+            line-height: 1.4;
+          }
+        }
+      }
+      .desc {
+        @include flex(y);
+        @include flex-wrap;
+        white-space: nowrap;
+        margin-top: 10px;
+        .com_star {
+          margin-left: 10px;
+          margin-bottom: 2px;
+        }
+      }
+      .icon_clock {
+        @include addImg(icon_clock_s, 16, 16, 16px 16px);
+        vertical-align: -4px;
+        margin-right: 3px;
+        flex: none;
+      }
+      .date {
+        letter-spacing: normal;
+        font-size: 12px;
+        line-height: 1.2;
+        @include media-min($m) {
+          font-size: 14px;
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+}
+//!기억력,지남력,집중력 등
+.com_type {
+  @include inflex(all);
+  padding: 5px 10px;
+  height: 31px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 50px;
+  box-shadow: 0 5px 5px 0 rgba(84, 172, 130, 0.45);
+  background-color: $lightPoint;
+  // font-size: 12px !important;
+  // line-height: 1.2;
+  &::after{
+    font-size: 12px !important;
+    line-height: 1.2;
+    @include media-min($m) {
+      font-size: 14px !important;
+      line-height: 1.4;
+    }
+  }
+  &.icon_remember {//기억력 Memory
+    &::before {
+      @include addImg(icon_remember_white, 17, 18, 17px 18px);
+      margin-right: 5px;
+    }
+    &::after{
+      content: "Memory";
+    }
+  }
+  &.icon_concentrate {//집중력 Concent
+    &::before {
+      @include addImg(icon_concentrate_white, 17, 18, 17px 18px);
+      margin-right: 5px;
+    }
+    &::after{
+      content: "Concent";
+    }
+  }
+  &.icon_orientation {//지남력 Orientat
+    &::before {
+      @include addImg(icon_orientation_white, 17, 18, 17px 18px);
+      margin-right: 5px;
+    }
+    &::after{
+      content: "Orientat";
+    }
+  }
+  &.icon_calculate {//계산능력 Logic
+    &::before {
+      @include addImg(icon_calculate_white, 17, 18, 17px 18px);
+      margin-right: 5px;
+    }
+    &::after{
+      content: "Logic";
+    }
+  }
+  &.icon_action {//실행력 Executive
+    &::before {
+      @include addImg(icon_action_white, 17, 18, 17px 18px);
+      margin-right: 5px;
+    }
+    &::after{
+      content: "Executive";
+    }
+  }
+  &.icon_visible {//시지각 Perception
+    &::before {
+      @include addImg(icon_visible_white, 17, 18, 17px 18px);
+      margin-right: 5px;
+    }
+    &::after{
+      content: "Perception";
+    }
+  }
+}
+//!접었다 폈다 모듈
+.com_toggle_wrap {
+  // position: relative;
+  .toggle_box {
+    height: 85px;
+    overflow: hidden;
+    .selected_txt {
+      display: block;
+    }
+  }
+  &.active {
+    .toggle_box {
+      height: auto !important;
+      // overflow: auto;
+    }
+    .selected_txt {
+      display: none;
+    }
+  }
+}
+//!agree
+.com_agree_section{
+  .all{
+    border-bottom:1px solid $c-border;
+    padding-bottom:20px;
+    margin-bottom:12.5px;
+    .com_chk{
+      &+label{
+        font-size: 18px;
+        line-height: 1.2;
+        @include media-min($m) {
+          font-size: 24px;
+          line-height: 1.2;
+        }
+        font-weight: 600;
+        &:before{
+          width:30px;
+          height:30px;
+          background-size: 12px auto;
+          vertical-align: -7px;
+        }
+      }
+    }
+  }
+  .com_chk{
+    &+label{
+      white-space: normal;
+      padding-right:15px;
+    }
+  }
+  .com_btn.txt {
+    font-size: 14px;
+    line-height: 1.2;
+    @include media-min($m) {
+      font-size: 18px;
+      line-height: 1.4;
+    }
+  }
+  .list{
+    .item{
+      margin-top:20px;
+      @include flex(between);
+      align-items: flex-start;
+      & > div{width:100%}
+      .com_btn{
+        &.txt{
+          margin-top:5px;
+        }
+      }
+    }
+  }
+}
+//!회원 정보
+.com_member_card{
+  border-radius: 10px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #fff;
+  padding-bottom:20px;
+  overflow: hidden;
+  &+.com_member_card{
+    margin-top:30px;
+  }
+  &.type_expert {
+    border-radius: 20px;
+    .com_item_wrap.type_expert {
+      border-radius: 0;
+      border: none;
+    }
+  }
+  .name_area{
+    padding: 18px 15px;
+    background-color: $pointBg;
+    @include flex(between);
+    .name{
+      font-weight: 600;
+      color: $point;  
+      font-size: 16px;
+      line-height: 1.4;
+      @include media-min($m) {
+        font-size: 20px;
+        line-height: 1.2;
+      }
+      @include flex(y);
+      .btn_deit{
+        margin-left:9px;
+        &::after{
+          @include addImg(icon_edit,19,21,contain)
+        }
+      }
+    }
+    .com_btn_wrap{
+      @include flex(column);
+      .full {
+        flex: 1;
+        padding: 9px 10px;
+        & + .full {
+          margin-top: 6px;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+  .info_area{
+    padding:26px 15px;
+    .com_info_list{
+      &+.com_btn_wrap{
+        margin-top:24px;
+      }
+    }
+  }
+  .state_area{
+    padding: 18px;
+    background-color: #51585f;   
+    font-size: 16px;
+    line-height: 1.4;
+    @include media-min($m) {
+      font-size: 20px;
+      line-height: 1.4;
+    }
+    font-weight: 600;
+    text-align: center;
+    color: #fff; 
+  }
+  .date_area{
+    padding:18px 15px 0;
+    font-weight: bold;
+    color: #212121;
+    font-size: 16px;
+    line-height: 1.4;
+    @include media-min($m) {
+      font-size: 22px;
+      line-height: 1.4;
+    }
+    .com_divider{
+      margin-top:14px;
+    }
+  }
+  .reserve_area{
+    padding:22px;
+    background-color: $pointBg;
+    margin-bottom:-20px;
+    .txt{
+      .point{
+        color:$point;
+        font-size: 16px;
+        line-height: 1.4;
+        @include media-min($m) {
+          font-size: 20px;
+          line-height: 1.4;
+        }
+      }
+    }
+    .com_btn_wrap{
+      margin-top:20px;
+    }
+    .com_divider{
+      margin-block:15px;
+    }
+    .date{
+      font-size: 16px;
+      line-height: 1.4;
+      @include media-min($m) {
+        font-size: 20px;
+        line-height: 1.4;
+      }
+      font-weight: 600;
+      color: #212121;  
+      .item{
+        font-size: 16px;
+        line-height: 1.4;
+        @include media-min($m) {
+          font-size: 20px;
+          line-height: 1.4;
+        }
+        &:not(:last-child){
+          @include divider(1px,16px,10px);
+          &::after{background-color:#c9c9c9;}
+        }
+      }
+    }
+    .location{
+      .name{
+        font-size: 16px;
+        line-height: 1.4;
+        @include media-min($m) {
+          font-size: 20px;
+          line-height: 1.4;
+        }
+        font-weight: bold;
+        color:$point;
+        margin-bottom:10px;
+      }
+      .list{
+        & :is(.tel,.address){
+          @include flex(y);
+          @include flex(s);
+        }
+        .icon{
+          width:15px;
+          height:15px;
+          margin-right:3px;
+          margin-top:5px;
+        }
+        .tel{
+          margin-bottom:10px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  & > .com_btn_wrap{
+    justify-content: center; 
+    gap:5px;   
+    .com_btn{
+      //white-space: nowrap;
+      line-height:1 ;
+      @include media-max($m) {
+        //flex:1;
+      }
+      @include media-min($m) {
+        min-width: 150px;
+      }
+    }
+    @include media-min($m) {
+      //max-width: 380px;
+      width:auto;
+      min-width: auto;
+      margin: 0 auto;
+    }
+    @include media-max($m) {
+      flex-wrap: wrap;
+    }
+    &.bottom{
+      padding-inline: 15px;
+    }
+    &.top{
+      padding:14px 15px 0;
+    }
+  }
+}
+//!약관내용
+.com_policy {
+  padding: 30px 0;
+  .tit {
+    color: $point;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.4;
+    @include media-min($m) {
+      font-size: 20px;
+      line-height: 1.4;
+    }
+  }
+  dt {
+    margin-top: 30px;
+    margin-bottom: 5px;
+    font-size: 13px;
+    line-height: 1.2;
+    @include media-min($m) {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+  }
+  dd {
+    font-size: 13px;
+    line-height: 1.2;
+    @include media-min($m) {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+    color: #666;
+  }
+}
+//!통계상세
+.com_statistics_result {
+  .result {
+    padding: 20px 0;
+    .com_pg_tit {
+      margin-bottom: 15px;
+    }
+    .com_item_wrap {
+      padding: 0;
+      border-radius: 0;
+      box-shadow: none;
+      border: 0;
+    }
+    .result_list {
+      position: relative;
+      .result_item {
+        font-size: 13px;
+        line-height: 1.2;
+        @include media-min($m) {
+          font-size: 16px;
+          line-height: 1.4;
+        }
+        font-weight: bold;
+        letter-spacing: 1px;
+        & + .result_item {
+          margin-top: 6px;
+        }
+      }
+      .btn_wrap {
+        position: absolute;
+        right: 0;
+        top: 0;
+        max-width: 200px;
+        @include flex(right);
+        @include flex-wrap;
+        gap:6px;
+        .com_type {
+          & + .com_type {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+//!커스텀 페이져
+.com_custom_pagination {
+  @include flex(all);
+  width: 100%;
+  padding: 0 25px;
+  margin-top: 30px;
+  .swiper-pagination-bullet {
+    margin: 0 4px;
+    width: 15px;
+    height: 15px;
+    background-color: #dedede;
+    opacity: 1;
+    &.swiper-pagination-bullet-active {
+      width: 25px;
+      height: 25px;
+      border: solid 2px $lightPoint;
+      background-color: #fff;
+    }
+  }
+}
+//swiper
+.com_swiper_wrap {
+  .link {
+    display: block;
+  }
+  &.full {
+    width: calc(100% + $pd-inline);
+    margin-right: calc(0px - $pd-inline);
+    @include media-min($m) {
+      width: 100%;
+      // width: calc(100% - 25px);
+      // margin-left: 15px;
+    }
+  }
+  .com_tab + &{
+    margin-top:38px;
+    @include media-min($m) {
+      margin-top:25px;
+    }
+  }
+}
+//label
+
+.com_label {
+  @include flex(y);
+  margin-block: 20px;
+  margin-inline: 10px;
+  gap: 20px;
+  &.right {
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: 0;
+  }
+  &.center {
+    justify-content: center;
+  }
+  .label_type {
+    @include flex(y);
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.2;
+    @include media-min($m) {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      margin-right: 5px;
+    }
+    &.selected {
+      &::before {
+        background-color: $lightPoint;
+      }
+    }
+    &.able {
+      &::before {
+        border: solid 1px #e2e5e8;
+        background-color: #fff;
+      }
+    }
+    &.disable {
+      &::before {
+        background-color: #dedede;
+      }
+    }
+    &.expected {
+      &::before {
+        background-color: #ff7f41;
+      }
+    }
+  }
+}
+//위치선택
+.com_location {
+  @include flex(y);
+  gap: 6px;
+  .icon {
+    width: 14px;
+    height: 18px;
+    object-fit: contain;
+  }
+}
+// 예약 캘린더,시간
+.com_reserve_date {
+  .com_center_wrap {
+    padding-inline: 25px;
+  }
+  .sec_reservation_date {
+    position: relative;
+    padding: 30px 0;
+    .com_pg_tit {
+      @include flex(y);
+    }
+    .icon_calendar {
+      @include addImg(icon_calendar, 27, 30, 27px 30px);
+      margin-right: 10px;
+    }
+    .icon_time {
+      @include addImg(icon_clock_b, 31, 31, 31px 31px);
+      margin-right: 10px;
+    }
+    .com_btn_toggle {
+      position: absolute;
+      left: initial;
+      right: 0;
+      top: 32px;
+      margin-left: auto;
+      background: none;
+      @include addImg(icon_date_arrow, 22, 22, 22px 22px);
+      transform: rotate(180deg);
+      &::before {
+        display: none;
+      }
+      &.active {
+        transform: rotate(360deg);
+      }
+    }
+    .com_toggle_wrap {
+      .toggle_box {
+        height: 0;
+      }
+      &.active {
+        padding: 20px 0 0;
+        .toggle_box {
+          height: auto;
+        }
+      }
+    }
+    .calendar {
+      .label {
+        margin-top: 30px;
+        margin-bottom: 18px;
+      }
+      .com_btn_wrap {
+        flex-wrap: wrap;
+        gap: 5px;
+        input[type=radio] {
+          & + label {
+            flex: 1;
+            min-width: 24%;
+            margin: 0;
+            cursor: pointer;
+            &.disabled {
+              
+            }
+          }
+        }
+        input[type=radio]:checked {
+          & + label {
+            background-color: $lightPoint;
+            color: #fff;
+          }
+        }
+        .com_btn {
+          border: solid 1px #e2e5e8;
+          background-color: #fff;
+          &.disabled {
+            background-color: #f4f7f8;
+          }
+          &.selected {
+            background-color: $lightPoint;
+            color: #fff;
+          }
+        }
+      }
+    }
+    .selected_txt {
+      margin-top: 20px;
+      font-weight: bold;
+      letter-spacing: normal;
+      color: $lightPoint;
+      font-size: 22px;
+      line-height: 1.07;
+      @include media-min($m) {
+        font-size: 28px;
+        line-height: 1.07;
+      }
+      &.active {
+        display: none;
+      }
+    }
+  }
+}
+//예약, 예약취소 공통
+.com_reservation {
+  .sec_info {
+    padding-block: 30px 30px;
+    .com_item_wrap {
+      padding: 20px 20px 40px;
+      border: 1px solid #d9d9d9;
+      .info_box {
+        margin-bottom: 20px;
+      }
+      .com_btn_wrap {
+        margin-top: 10px;
+        border-top: 0;
+        padding-top: 10px;
+      }
+    }
+  }
+  .sec_input {
+    .tit_field {
+      width: auto;
+    }
+  }
+  .com_divider{
+    &+.sec_input{
+      margin-top:24px;
+    }
+  }
+}
+//review
+.com_review{
+  padding-block: 36px 30px;
+  border-top: 10px solid #e7e9ee;
+  .com_pg_tit{
+    margin-bottom:24.5px;
+    padding-bottom: 0 !important;
+    @include flex(y);
+    .cnt {
+      font-size: 18px;
+      line-height: 1.4;
+      @include media-min($m) {
+        font-size: 24px;
+        line-height: 1.4;
+      }
+      color: $lightPoint;
+    }
+    .icon_review {
+      @include addImg(icon_review_black, 26, 26, 26px 26px);
+      margin-right: 10px;
+    }
+  }
+  .com_center_wrap {
+    .com_pg_tit {
+      margin: 0;
+      padding-bottom: 0;
+    }
+  }
+  .list{
+    margin-top: 20px;
+    max-height: 70vh;
+    .review_item {
+      padding: 18px 0 10px;
+      border-bottom: 1px solid $c-border;
+      &:last-child {
+        border-bottom: 1px solid #979f9b;
+      }
+      .info_box {
+        @include flex(between);
+        gap: 10px;
+        margin-bottom: 5px;
+        flex-wrap: wrap;
+        .com_star_box {
+          margin-left: auto;
+        }
+        .name {
+          font-weight: bold;
+          font-size: 16px;
+          line-height: 1.4;
+          @include media-min($m) {
+            font-size: 20px;
+            line-height: 1.4;
+          }
+        }
+        .date {
+          margin-right: auto;
+          font-size: 12px;
+          line-height: 1.2;
+          @include media-min($m) {
+            font-size: 14px;
+            line-height: 1.4;
+          }
+        }
+      }
+      .content {
+        padding: 8px 0;
+      }
+      &.reply {
+        padding-top:0;
+        padding:18px 20px 20px 10px;
+        margin-top: -1px;
+        background: #fff;
+        border-radius: 10px;
+        border:none;
+        .info_box {
+          .name {
+            font-weight: bold;
+            letter-spacing: normal;
+            color: $lightPoint;
+            font-size: 16px;
+            line-height: 1.2;
+            @include media-min($m) {
+              font-size: 20px;
+              line-height: 1.2;
+            }
+            &::before {
+              @include addImg(icon_reply_bar, 13, 13, 13px 13px);
+              vertical-align: 3px;
+              margin-right: 5px;
+            }
+          }
+        }
+        .content {
+          padding-left: 20px;
+        }
+        .textarea{
+          margin-block:10px;
+        }
+        &+.review_item{
+          border-top:1px solid #e7e9ee;
+          margin-top:20px;
+        }
+      }
+    }
+  }
+  .btn_review_write {
+    min-width: 140px;
+    margin-top: 20px;
+    .icon_pencil {
+      @include addImg(icon_pencil_s, 18, 18, 18px 18px);
+      margin-right: 8px;
+    }
+  }
+  .btn_wrap {
+    @include flex(y);
+    justify-content: flex-end;
+    margin-left:auto;
+    .btn_txt {
+      &.bar {
+        @include divider(1px,12px,10px);
+      }
+    }
+  }
+  .com_bg &{
+    margin-bottom:calc(0px - $pd-main);
+    padding-bottom:$pd-main;
+  }
+  .cont_desc {
+    margin-top: 20px;
+  }
+  .contents_box {
+    margin-top: 20px;
+  }
+}
+
+.com_search_expert {
+  padding: 25px 0;
+  .com_pg_tit {
+    padding: 0 25px 25px 0;
+    margin-bottom: 0;
+  }
+  .com_swiper_wrap.full {
+    @include media-min($m) {
+      width: calc(100% + 25px);
+    }
+  }
+  .com_item_wrap.type_expert {
+    border: solid 1px #d9d9d9;
+    margin: 0 0 6px 3px;
+  }
+}

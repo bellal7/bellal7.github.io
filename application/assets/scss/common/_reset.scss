@@ -1,0 +1,499 @@
+//* 스타일 초기화 및 폰트 (초기 - 폰트, placeholder 컬러만 수정)
+
+@charset "utf-8";
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 100; 
+	font-style: normal; 
+	src: url(../fonts/Pretendard-Thin.woff2) format('woff2'),
+			url(../fonts/Pretendard-Thin.woff) format('woff');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 200; 
+	font-style: normal; 
+	src: url(../fonts/Pretendard-ExtraLight.woff2) format('woff2'),
+			url(../fonts/Pretendard-ExtraLight.woff) format('woff');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 300; 
+	font-style: normal; 
+	src: url(../fonts/Pretendard-Light.woff2) format('woff2'),
+			url(../fonts/Pretendard-Light.woff) format('woff');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 400; 
+	font-style: normal; 
+	src: url(../fonts/Pretendard-Regular.woff2) format('woff2'),
+			url(../fonts/Pretendard-Regular.woff) format('woff');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 500; 
+	font-style: normal; 
+	src: url(../fonts/Pretendard-Medium.woff2) format('woff2'),
+			url(../fonts/Pretendard-Medium.woff) format('woff');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 600; 
+	font-style: normal; 
+	src: url(../fonts/Pretendard-SemiBold.woff2) format('woff2'),
+			url(../fonts/Pretendard-SemiBold.woff) format('woff');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 700; 
+	font-style: normal; 
+	src: url(../fonts/Pretendard-Bold.woff2) format('woff2'),
+			url(../fonts/Pretendard-Bold.woff) format('woff');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 800; 
+	font-style: normal; 
+	src: url(../fonts/Pretendard-ExtraBold.woff2) format('woff2'),
+			url(../fonts/Pretendard-ExtraBold.woff) format('woff');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 900; 
+	font-style: normal; 
+	src: url(../fonts/Pretendard-Black.woff2) format('woff2'),
+			url(../fonts/Pretendard-Black.woff) format('woff');
+	font-display: swap;
+}
+
+html {
+	/* Prevent font scaling in landscape */
+	-webkit-text-size-adjust: none; /*Chrome, Safari, newer versions of Opera*/
+	-moz-text-size-adjust: none; /*Firefox*/
+	-ms-text-size-adjust: none; /*Ie*/
+	-o-text-size-adjust: none; /*old versions of Opera*/
+}
+
+*,
+*::before,
+*::after {
+	font-family: $font_default;
+	letter-spacing: -0.05em;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	word-break: keep-all;
+	-webkit-tap-highlight-color: rgba(0,0,0,0); //기본적으로 클릭할때 약간씩 반짝반짝 하는 값 제거
+	@include browser-ie {
+		word-break: break-all;
+	}
+  letter-spacing: -0.025em;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+html {
+  color: #333;
+  -webkit-text-size-adjust: none;
+  /*Chrome, Safari, newer versions of Opera*/
+  -moz-text-size-adjust: none;
+  /*Firefox*/
+  -ms-text-size-adjust: none;
+  /*Ie*/
+  -o-text-size-adjust: none;
+  /*old versions of Opera*/
+}
+
+* {
+  box-sizing: border-box;
+  font-family: $font_default, "Malgun Gothic", "맑은 고딕", Roboto, Arial;
+}
+
+
+/*a,body,dd,div,dl,dt,h1,h2,h3,h4,h5,input,li,ol,p,html,ul,button,textarea*/
+html,
+textarea,
+input {
+  font-weight: 400;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+a,
+body,
+dd,
+div,
+dl,
+dt,
+h1,
+h2,
+h3,
+h4,
+h5,
+html,
+li,
+ol,
+p,
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li,
+ol,
+ul {
+  list-style: none
+}
+
+a,
+img {
+  border: none
+}
+
+img {
+  max-width: 100%
+}
+
+a+a,
+img,
+input+a,
+input+button {
+  vertical-align: middle
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  color: $fc-default;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+input[type=number],
+input[type=password],
+input[type=tel],
+input[type=text],
+input[type=date],
+input[type=search],
+select,
+textarea {
+  border: 1px solid#e2e2e2;
+  padding: 0 10px;
+  box-sizing: border-box;
+  color: $fc-default;
+  background: #f1f0f5;
+  vertical-align: middle;
+  border-radius: 10px;
+  height: 60px;
+  line-height: 60px;
+  letter-spacing: -0.33px;
+  font-size: 14px;
+}
+textarea{
+  line-height: 1.5;
+}
+
+input {
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
+
+select {-webkit-appearance: none;-moz-appearance: none;appearance: none;background: #f1f0f5 url('../img/select_arrow.png') no-repeat; background-position: calc(100% - 4px) center; background-size: 20px auto; padding-right:22px;}
+/*select:disabled { background-image:url('../img/common/select_arrow_off.png'); background-color: #f8f8f8; } */
+input[type=chekbox],
+input[type=radio] {
+  padding-right: 8px;
+  display: none;
+}
+
+input+input,
+input+input+label,
+select+input+label,
+button+input+label,
+select+select,
+select+input,
+input+select {
+  margin-left: 4px;
+}
+
+label:last-child {
+  margin-right: 0
+}
+
+label+input[type=checkbox]+label,
+label+input[type=radio]+label {
+  margin-left: 6px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0
+}
+
+input[type=search] {position: relative;padding-inline: 15px; border:1px solid $c-border; height: 50px;}
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration,
+input[type=search]::-webkit-search-cancel-button{
+    -webkit-appearance: none;
+    width: 16px; 
+    height: 16px; 
+    background: url(../img/icon_close.png) center center no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+input::-webkit-search-decoration
+,input::-webkit-search-cancel-button
+,input::-webkit-search-results-button
+,input::-webkit-search-results-decoration{ 
+  position: absolute;
+  right: 0;
+  top: 15px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400
+}
+
+i {
+  font-style: normal
+}
+
+*,
+::after,
+::before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border-spacing: 0
+}
+
+th {
+  text-align: center
+}
+
+td {
+  text-align: left
+}
+
+table>caption {
+  position: absolute;
+  text-indent: -9999px
+}
+
+button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer
+}
+
+button:disabled {
+  cursor: not-allowed
+}
+
+button,
+input,
+textarea {
+  -webkit-appearance: none
+}
+
+select,
+textarea,
+input[type=text] {
+  width: 100%;
+}
+
+textarea {
+  min-height: 150px;
+  text-align: left;
+  padding: 13px;
+}
+
+input[type=tel] {
+  width: 40px;
+  min-width: 40px;
+  margin-right: 4px;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input:disabled { 
+  border: solid 1px #ebe8e8;
+  background-color: #f8f8f8;
+  cursor:not-allowed 
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #bcbcbc;
+  opacity: 1;
+  font-size: 14px;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #bcbcbc;
+  opacity: 1;
+  font-size: 14px; 
+}
+
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+  color: #bcbcbc;
+  opacity: 1;  
+  font-size: 14px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #bcbcbc;
+  opacity: 1;  
+  font-size: 14px;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #bcbcbc;
+  opacity: 1;  
+  font-size: 14px;
+}
+
+select:disabled,
+input[readonly],
+textarea[readonly] {
+  border: 1px solid #f8f8f8;
+  opacity: 1;
+  background: #f8f8f8;
+}
+
+input[readonly]:focus,
+textarea[readonly]:focus {
+  outline: none;
+}
+
+input:focus {
+  outline: none
+}
+
+input:disabled::-webkit-input-placeholder,
+input[readonly]::-webkit-input-placeholder,
+textarea:disabled::-webkit-input-placeholder,
+textarea[readonly]::-webkit-input-placeholder {
+  color: #b5b3bb;
+  opacity: 1
+}
+
+input:disabled:-ms-input-placeholder,
+input[readonly]:-ms-input-placeholder,
+textarea:disabled:-ms-input-placeholder,
+textarea[readonly]:-ms-input-placeholder {
+  color: #b5b3bb;
+  opacity: 1
+}
+
+input:disabled::-ms-input-placeholder,
+input[readonly]::-ms-input-placeholder,
+textarea:disabled::-ms-input-placeholder,
+textarea[readonly]::-ms-input-placeholder {
+  color: #b5b3bb;
+  opacity: 1
+}
+
+input:disabled::placeholder,
+input[readonly]::placeholder,
+textarea:disabled::placeholder,
+textarea[readonly]::placeholder {
+  color: #b5b3bb;
+  opacity: 1
+}
+
+input:disabled:-ms-input-placeholder,
+input[readonly]:-ms-input-placeholder,
+textarea:disabled:-ms-input-placeholder,
+textarea[readonly]:-ms-input-placeholder {
+  color: #b5b3bb;
+  opacity: 1
+}
+
+input::-ms-clear,
+input::-ms-reveal,
+textarea::-ms-clear,
+textarea::-ms-reveal {
+  display: none
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button,
+textarea::-webkit-inner-spin-button,
+textarea::-webkit-outer-spin-button {
+  -webkit-appearance: none
+}
+
+textarea {
+  line-height: 1.5
+}
+
+textarea {
+  resize: none;
+}
+
+img {
+  border: 0;
+  vertical-align: middle
+}
+
+hr {
+  display: block;
+  width: 100%;
+  height: 1px;
+  border: none;
+}
+
+input+button,
+textarea+button {
+  margin-left:5px;
+}
+
+main,
+section,
+article {
+  display: block;
+}
+
+fieldset,
+form {
+  border: none;
+  outline: none;
+}
+
+address {
+  font-style: normal;
+}
